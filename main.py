@@ -32,4 +32,5 @@ class StockData:
             self.write_to_excel()
             return self.read_excel()
 
-print(StockData("AAPL").get_data())
+stock_name = "AAPL"
+print(StockData(stock_name).get_data())
