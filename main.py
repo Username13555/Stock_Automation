@@ -32,5 +32,21 @@ class StockData:
             self.write_to_excel()
             return self.read_excel()
 
-stock_name = "AAPL"
-print(StockData(stock_name).get_data())
+stock_name = "AAPL" # Stock name
+
+stock_data_from_market = StockData(stock_name).get_data()
+stock_data_store = pd.DataFrame(columns = ["Name", "Bought Price", "Current Price", "Profit/Loss", "Percentage"])
+
+#bought_price = 0
+#current_price = stock_data_from_market["Close"][-1]
+
+
+for i in range(0,len(stock_data_store)):
+    if stock_data_store["Bought Price"][i] / stock_data_from_market["Close"][-1] * 100 > 100:
+        stock_data_store["Profit/Loss"][i] = "Profit"
+        stock_data_store["Percentage"][i] = (stock_data_store["Bought Price"][i] / stock_data_from_market["Close"][-1] * 100) - 100
+    else:
+        stock_data_store["Profit/Loss"][i] = "Loss"
+        stock_data_store["Percentage"][i] = 100 - (stock_data_store["Bought Price"][i] / stock_data_from_market["Close"][-1] * 100)
+
+print(stock_data_store)
