@@ -32,13 +32,18 @@ class StockData:
             self.write_to_excel()
             return self.read_excel()
 
-stock_name = "AAPL" # Stock name
+stock_name = "AAPL" # Stock name, users should find the name used in the market
 
 stock_data_from_market = StockData(stock_name).get_data()
 stock_data_store = pd.DataFrame(columns = ["Name", "Bought Price", "Current Price", "Profit/Loss", "Percentage"])
 
-#bought_price = 0
+#target_price = 0
+#stock_amount = 0
 #current_price = stock_data_from_market["Close"][-1]
+#bought_price = current_price
+#changing_amount = 0
+#total_amount = 0
+#change in profit = 0
 
 
 for i in range(0,len(stock_data_store)):
@@ -49,4 +54,5 @@ for i in range(0,len(stock_data_store)):
         stock_data_store["Profit/Loss"][i] = "Loss"
         stock_data_store["Percentage"][i] = 100 - (stock_data_store["Bought Price"][i] / stock_data_from_market["Close"][-1] * 100)
 
+print(stock_data_from_market)
 print(stock_data_store)
