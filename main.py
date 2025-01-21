@@ -3,6 +3,7 @@ import pandas as pd # Module to manipulate data
 import openpyxl # Module to write data to Excel
 import datetime # Module to get the current date
 import os # Module to check if a file exists
+import matplotlib.pyplot as plt
 
 class StockData:
     def __init__(self, stock):
@@ -31,6 +32,15 @@ class StockData:
             self.get_data()
             self.write_to_excel()
             return self.read_excel()
+    
+def plot_data(data):
+    data.to_csv('data.csv')
+    csv = pd.read_csv('data.csv', index_col=0)
+
+    d = pd.DataFrame(data.loc[:, ["Close"]])
+
+    plot = d.plot(title="DataFrame Plot")
+    plt.show()
 
 stock_name = "AAPL" # Stock name, users should find the name used in the market
 
@@ -58,3 +68,5 @@ for i in range(0,len(stock_data_store)):
 
 print(stock_data_from_market)
 print(stock_data_store)
+
+plot_data(stock_data_from_market)
