@@ -38,12 +38,14 @@ stock_data_from_market = StockData(stock_name).get_data()
 stock_data_store = pd.DataFrame(columns = ["Name", "Bought Price", "Current Price", "Profit/Loss", "Percentage"])
 
 #target_price = 0
-#stock_amount = 0
 #current_price = stock_data_from_market["Close"][-1]
 #bought_price = current_price
-#changing_amount = 0
+#changing_amount = 0 #the number of stocks
 #total_amount = 0
-#change in profit = 0
+#if total amount == 0:
+#   total_amount = changing_amount
+#else:
+#   total_amount = total_amount + changing_amount
 
 
 for i in range(0,len(stock_data_store)):
