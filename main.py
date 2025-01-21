@@ -49,9 +49,13 @@ stock_data_store = pd.DataFrame(columns = ["Name", "Bought Price", "Current Pric
 
 #target_price = 0
 #current_price = stock_data_from_market["Close"][-1]
-#bought_price = current_price
-#changing_amount = 0 #the number of stocks
-#total_amount = 0
+#bought_price = 0
+#if bought_price == 0:
+#   bought_price = current_price
+#else:
+#   bought_price = bought_price*total_amount + current_price
+#changing_amount = 0
+#total_amount = 0 #the number of stocks to calculate average price
 #if total amount == 0:
 #   total_amount = changing_amount
 #else:
@@ -66,7 +70,7 @@ for i in range(0,len(stock_data_store)):
         stock_data_store["Profit/Loss"][i] = "Loss"
         stock_data_store["Percentage"][i] = 100 - (stock_data_store["Bought Price"][i] / stock_data_from_market["Close"][-1] * 100)
 
-print(stock_data_from_market)
-print(stock_data_store)
+print(stock_data_from_market) # Printing out historical data
+print(stock_data_store) # Printing out user's data
 
-plot_data(stock_data_from_market)
+plot_data(stock_data_from_market) # Plotting price trends
